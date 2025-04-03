@@ -33,7 +33,11 @@ const routes: Routes = [
   {
     path: 'bill-create',
     loadChildren: () => import('./bill-create/bill-create.module').then( m => m.BillCreatePageModule)
+  },  {
+    path: 'user',
+    loadChildren: () => import('./user/user.module').then( m => m.UserPageModule)
   },
+
 
 
 ];
