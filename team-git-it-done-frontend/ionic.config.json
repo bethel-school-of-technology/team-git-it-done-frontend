@@ -1,5 +1,7 @@
 {
   "name": "team-git-it-done-frontend",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }
