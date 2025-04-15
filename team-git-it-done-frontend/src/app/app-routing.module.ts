@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
 
 
 const routes: Routes = [
@@ -33,7 +34,8 @@ const routes: Routes = [
   {
     path: 'bill-create',
     loadChildren: () => import('./bill-create/bill-create.module').then( m => m.BillCreatePageModule)
-  },  {
+  },
+  {
     path: 'user',
     loadChildren: () => import('./user/user.module').then( m => m.UserPageModule)
   },
