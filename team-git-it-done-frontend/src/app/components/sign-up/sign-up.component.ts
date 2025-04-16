@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   selector: 'app-sign-up',
   standalone: false,
   templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.css']
+  styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent implements OnInit {
 
