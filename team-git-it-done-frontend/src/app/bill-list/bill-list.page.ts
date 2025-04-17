@@ -33,10 +33,14 @@ listofBills: Bill[] = [];
 
   constructor(private myBillService: BillService) { }
 
+  //Change the (1) bellow to an actual ID number
   ngOnInit(): void {
-    this.myBillService.getAllBills().subscribe((response: Bill[]) => {
-      console.log(response);
-      this.listofBills = response;
+    // this.myBillService.getAllBills(1).subscribe((response: Bill[]) => {
+    //   console.log(response);
+    //   this.listofBills = response;
+    // })
+    this.myBillService.getAllBills(1).subscribe((Bill)=>{
+      this.listofBills=Bill;
     })
   }
 
@@ -45,6 +49,7 @@ listofBills: Bill[] = [];
     this.myBillService.deleteBill(id).subscribe((response: any) =>{
       console.log(response);
       this.ngOnInit();
+      
     })
   }
 

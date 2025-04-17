@@ -14,15 +14,15 @@ export class BillCreatePage implements OnInit {
 newBill: Bill = new Bill();
 
 constructor(private myBillService: BillService, private router: Router) { }
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
 
-ngonInit(): void {
-}
-
-createNew(){
-  this.myBillService.createBill(this.newBill).subscribe((response: any) => {
-    console.log(response);
-    this.router.navigate(["listall"]);
-  })
-}
+  createNew(){
+    this.myBillService.createBill(this.newBill).subscribe((response: any) => {
+      console.log(response);
+      this.router.navigate(["listall"]);
+    })
+  }
 
 }

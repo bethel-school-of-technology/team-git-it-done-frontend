@@ -20,7 +20,7 @@ billID: number | undefined;
 
  ngOnInit(): void {
   //Extracted the ID from URL
-  this .billID = parseInt(this.actRoute.snapshot.paramMap.get("billID"));
+  this .billID = parseInt(this.actRoute.snapshot.paramMap.get("billID")!, 0);
   console.log(this.billID);
 
   //Fetch the contact corresponding to the ID

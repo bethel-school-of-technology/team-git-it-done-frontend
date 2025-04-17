@@ -21,20 +21,20 @@ export class BillEditPage implements OnInit {
 
   ngOnInit(): void {
     //Extracted the ID from URL
-    this.billID = parseInt(this.actRoute.snapshot.paramMap.get("billID"));
+    this.billID = parseInt(this.actRoute.snapshot.paramMap.get("billID")!, 0);
     console.log(this.billID);
 
     //Fetch the contact corresponding to the ID
-    this.myBillService.getBillByID(this.billID).subscribe((response: () => void) => {
+    this.myBillService.getBillByID(this.billID).subscribe(response => {
       console.log(response);
-      this.editBill = response;
+      // this.editBill = response;
     })
   }
 
   editBill() {
     this.myBillService.editBill(this.billID, this.updateBill).subscribe((response: any) => {
       console.log(response);
-      this.router.navigate9(["listall"]);
+      this.router.navigate(["listall"]);
 
     })
   }

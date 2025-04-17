@@ -22,13 +22,13 @@
 </ion-header>
 
 <div *ngFor = "let bill of listofBills">
-  <p>{{bill.id}}. 
-    <a routerLink= "/bill-list/{{bill.id}}">
+  <p>{{bill.billid}}. 
+    <a routerLink= "/bill-list/{{bill.billid}}">
       {{bill.name}} {{bill.description}} {{bill.price}}
     </a></p>
 
     <ion-button 
-    (click) = "deleteBill(Bill.id)">Delete Bill
+    onclick = "deleteBill(bill.billid)">Delete Bill
   </ion-button>
 
 </div>
