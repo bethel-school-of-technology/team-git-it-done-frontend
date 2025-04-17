@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Bill } from 'src/app/models/bill';
+import { ActivatedRoute } from '@angular/router';
+import { BillService } from 'src/app/services/bill.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-bill-edit',
@@ -8,9 +12,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BillEditPage implements OnInit {
 
-  constructor() { }
+  //Property to store current bill Info
+  updateBill: Bill = new Bill();
 
-  ngOnInit() {
+  billID: number | undefined;
+
+  constructor(private actRoute: ActivatedRoute, private myBillService: BillService, private router: Router) { }
+
+  ngOnInit(): void {
+    //Extracted the ID from URL
+    this.billID = parseInt(this.actRoute.snapshot.paramMap.get("billID"));
+    console.log(this.billID);
+
+    //Fetch the contact corresponding to the ID
+    this.myBillService.getBillByID(this.billID).subscribe((response: () => void) => {
+      console.log(response);
+      this.editBill = response;
+    })
   }
 
+  editBill() {
+    this.myBillService.editBill(this.billID, this.updateBill).subscribe((response: any) => {
+      console.log(response);
+      this.router.navigate9(["listall"]);
+
+    })
+  }
 }

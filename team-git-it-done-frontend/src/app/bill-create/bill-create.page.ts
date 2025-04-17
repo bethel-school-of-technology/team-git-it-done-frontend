@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Bill } from '../models/bill';
+import { BillService } from '../services/bill.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-bill-create',
@@ -8,9 +11,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BillCreatePage implements OnInit {
 
-  constructor() { }
+newBill: Bill = new Bill();
 
-  ngOnInit() {
-  }
+constructor(private myBillService: BillService, private router: Router) { }
+
+ngonInit(): void {
+}
+
+createNew(){
+  this.myBillService.createBill(this.newBill).subscribe((response: any) => {
+    console.log(response);
+    this.router.navigate(["listall"]);
+  })
+}
 
 }

@@ -1,0 +1,19 @@
+{
+    "bill": [
+      {
+        "billid": 1,
+        "name": "Bob",
+        "description": "bob@bob.com",
+        "price": "$44",
+        "creatorId": 1
+      },
+      {
+        "billid": 2,
+        "name": "Kara",
+        "description": "kara@kara.com",
+        "price": "$34",
+        "creatorId": 2
+      }
+
+    ]
+  }

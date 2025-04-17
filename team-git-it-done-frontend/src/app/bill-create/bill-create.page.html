@@ -1,4 +1,4 @@
-<ion-header [translucent]="true">
+<!-- <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>bill-create</ion-title>
   </ion-toolbar>
@@ -10,4 +10,22 @@
       <ion-title size="large">bill-create</ion-title>
     </ion-toolbar>
   </ion-header>
-</ion-content>
+</ion-content> -->
+
+<hr>
+<h3>Create A New Bill</h3>
+<hr>
+<form (ngSubmit) = "createNew()">
+  <label>Name </label>
+  <Input type="text" name="name" [(ngModel)] = "newBill.name">
+  <br>
+  <label>Description </label>
+  <Input type="text" name="description" [(ngModel)] = "newBill.description">
+  <br>
+  <label>Price </label>
+  <Input type="text" name="price" [(ngModel)] = "newBill.price">
+  <br>
+<ion-button 
+  type="submit">CREATE
+</ion-button>
+</form>

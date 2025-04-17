@@ -14,10 +14,10 @@ export class Bill {
     name? : "";
     description? : string="";
     price? : number=0;
-    creatorId? : "";
+    creatorId? : number=0;
     billLinks? : "";
 
-    constructor(billid?: number, name?: "", description?: "", price?: number, creatorId?:"", billLinks?: "") {
+    constructor(billid?: number, name?: "", description?: "", price?: number, creatorId?:number, billLinks?: "") {
         this.billid = billid;
         this.name = name;
         this.description = description;

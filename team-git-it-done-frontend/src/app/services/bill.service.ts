@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Bill } from '../models/bill';
 import { Observable } from 'rxjs';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -16,8 +17,8 @@ tokenKey: string = "myBillToken";
 constructor(private http: HttpClient) { }
 
 
-getAllBill(id: number): Observable<Bill[]> {
-  return this.http.get<Bill[]>(this.baseURL);
+getAllBills(id: number): Observable<Bill[]> {
+  return this.http.get<Bill[]>(this.baseURL+ "/" + id);
 } 
 
 
@@ -33,12 +34,11 @@ return this.http.get<Bill>(this.baseURL + "/" + id);
 }
 
 
-editBill(bill: any): Observable<any> {
+editBill(bill: any, updateBill: Bill): Observable<any> {
   return this.http.put(`/api/bill/${bill.id}`, bill, {
     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
   });
 }
-
 
 
 deleteBill(id: number): Observable<any> {

@@ -1,6 +1,6 @@
-<ion-header [translucent]="true">
+<!-- <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>bill-list</ion-title>
+    <ion-title>List of Bills</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -10,4 +10,25 @@
       <ion-title size="large">bill-list</ion-title>
     </ion-toolbar>
   </ion-header>
-</ion-content>
+</ion-content> -->
+
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+  </ion-buttons>
+    <ion-title>List of Bills</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<div *ngFor = "let bill of listofBills">
+  <p>{{bill.id}}. 
+    <a routerLink= "/bill-list/{{bill.id}}">
+      {{bill.name}} {{bill.description}} {{bill.price}}
+    </a></p>
+
+    <ion-button 
+    (click) = "deleteBill(Bill.id)">Delete Bill
+  </ion-button>
+
+</div>
