@@ -25,4 +25,17 @@ constructor(private myBillService: BillService, private router: Router) { }
     })
   }
 
+  // creatNew() {
+  //   this.myBillService.createBill(this.newBill).subscribe(() => {
+  //     window.alert("Created BIll Successfully");
+  //     this.router.navigate(['bill']);
+  //   }, error => {
+  //     console.log('Error: ', error)
+  //     if (error.status === 401 || error.status === 403) {
+  //       this.router.navigate(['signin']);
+  //     }
+  //   });
+  // }
+
+
 }

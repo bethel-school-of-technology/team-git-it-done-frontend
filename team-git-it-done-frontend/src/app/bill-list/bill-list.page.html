@@ -22,8 +22,8 @@
 </ion-header>
 
 <div *ngFor = "let bill of listofBills">
-  <p>{{bill.billid}}. 
-    <a routerLink= "/bill-list/{{bill.billid}}">
+  <p>{{bill.billId}}. 
+    <a routerLink= "/bill-list/{{bill.billId}}">
       {{bill.name}} {{bill.description}} {{bill.price}}
     </a></p>
 
@@ -32,3 +32,21 @@
   </ion-button>
 
 </div>
+
+
+<!-- <h1>Bill List</h1>
+<a [routerLink]="['new']">
+  Create New Bill
+</a>
+<div *ngIf="listofBills">
+    <div *ngFor="let bill of listofBills">
+        <h2>{{bill.name}} - ${{bill.price}}</h2>
+        <p>{{bill.description}}</p>       
+        <hr>
+
+        <ion-button 
+        onclick = "deleteBill(bill.billid)">Delete Bill
+      </ion-button>
+
+    </div>
+</div> -->

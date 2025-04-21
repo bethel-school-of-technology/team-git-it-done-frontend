@@ -13,7 +13,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'bill-detail/:id',
+    path: 'bill-detail/:billid',
     loadChildren: () => import('./bill-detail/bill-detail.module').then( m => m.BillDetailPageModule)
   },
   {

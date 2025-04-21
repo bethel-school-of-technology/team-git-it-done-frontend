@@ -12,15 +12,15 @@ import { BillLink } from "./bill-link";
 
 export class Bill {
 
-    billid? : number;
+    billId? : number;
     name? : string;
     description? : string;
     price? : number;
     creatorId? : number;
     billLinks? : BillLink;
 
-    constructor(billid?: number, name?: string, description?: string, price?: number, creatorId?:number, billLinks?: BillLink) {
-        this.billid = billid;
+    constructor(id?: number, name?: string, description?: string, price?: number, creatorId?:number, billLinks?: BillLink) {
+        this.billId = id;
         this.name = name;
         this.description = description;
         this.price = price;

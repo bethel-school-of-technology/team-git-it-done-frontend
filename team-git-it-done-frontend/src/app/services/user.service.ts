@@ -10,6 +10,7 @@ import { User } from '../models/user';
 export class UserService {
 
   baseURL: string = "https://localhost:7025/api/auth";
+ 
 
   constructor(private http: HttpClient) { }
 

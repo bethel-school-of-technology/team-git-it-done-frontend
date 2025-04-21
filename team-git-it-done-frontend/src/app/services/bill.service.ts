@@ -10,16 +10,20 @@ import { Observable } from 'rxjs';
 export class BillService {
 
 
-
-baseURL: string = "https://localhost:8100/api/bill";
+baseURL: string = "https://localhost:3000/api/bill";
+// baseURL: string = "https://localhost:8100/api/bill";
 tokenKey: string = "myBillToken";
 
 constructor(private http: HttpClient) { }
 
 
-getAllBills(id: number): Observable<Bill[]> {
-  return this.http.get<Bill[]>(this.baseURL+ "/" + id);
-} 
+// getAllBills(id: number): Observable<Bill[]> {
+//   return this.http.get<Bill[]>(this.baseURL+ "/" + id);
+// } 
+
+getAllBills(): Observable<Bill[]> {
+  return this.http.get<Bill[]>(this.baseURL);
+}
 
 
 createBill(newBill: Bill) {
@@ -28,6 +32,9 @@ createBill(newBill: Bill) {
   }
   return this.http.post(this.baseURL, newBill, { headers: reqHeaders });
 }
+
+
+
 
 getBillByID(id: number): Observable<Bill> {
 return this.http.get<Bill>(this.baseURL + "/" + id);

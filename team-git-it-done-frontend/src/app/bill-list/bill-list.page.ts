@@ -39,7 +39,7 @@ listofBills: Bill[] = [];
     //   console.log(response);
     //   this.listofBills = response;
     // })
-    this.myBillService.getAllBills(1).subscribe((Bill)=>{
+    this.myBillService.getAllBills().subscribe((Bill)=>{
       this.listofBills=Bill;
     })
   }
