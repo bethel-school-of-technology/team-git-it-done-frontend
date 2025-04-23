@@ -8,29 +8,25 @@ const routes: Routes = [
     path: '',
     component: ProfilePage,
     children: [
-     
       {
         path: 'bill-list',
-        loadChildren: () => import('../bill-list/bill-list.module').then(m => m.BillListPageModule)
+        loadChildren: () =>
+          import('../bill-list/bill-list.module').then(
+            (m) => m.BillListPageModule
+          ),
       },
-      // {
-      //   path: 'profile-edit',
-      //   loadChildren: () => import('../profile-edit/profile-edit.module').then(m => m.ProfileEditComponent)
-      // },
-      // {
-      //   path: 'photos',
-      //   loadChildren: () => import('../photos/photos.module').then(m => m.PhotosPageModule)
-      // },
+      {
+        path: 'friends',
+        loadChildren: () =>
+          import('../friends/friends.module').then((m) => m.FriendsPageModule),
+      },
       {
         path: '',
         redirectTo: 'bill-list',
-        pathMatch: 'full'
-      }
-    ]
+        pathMatch: 'full',
+      },
+    ],
   },
-
-
-
 ];
 
 @NgModule({
