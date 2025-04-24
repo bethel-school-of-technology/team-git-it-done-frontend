@@ -7,6 +7,7 @@ import { User } from '../models/user';
   selector: 'app-sign-up',
   templateUrl: './sign-up.page.html',
   styleUrls: ['./sign-up.page.scss'],
+  standalone: false,
 })
 export class SignUpPage implements OnInit {
   newUser: User = new User();
@@ -19,7 +20,7 @@ export class SignUpPage implements OnInit {
   signUp() {
     this.userService.signUp(this.newUser).subscribe(() => {
         window.alert("User Registered Successfully");
-        this.router.navigate(['signin']);
+        this.router.navigate(['/sign-in']);
     }, error => {
         window.alert("User Registration Error");
         console.log('Error: ', error)

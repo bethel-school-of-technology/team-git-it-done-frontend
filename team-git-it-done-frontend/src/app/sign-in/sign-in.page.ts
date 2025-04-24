@@ -20,11 +20,11 @@ export class SignInPage implements OnInit {
  
   signin(){
     this.userService.login(this.email, this.password).subscribe((response:any) => {
-        this.router.navigateByUrl('/bill-list');
+        this.router.navigateByUrl('/profile');
     }, error => {
         console.log('Error: ', error);
         window.alert('Unsuccessful Login');
-        this.router.navigateByUrl('/signin');
+        this.router.navigateByUrl('/sign-in');
     });
   }
 }

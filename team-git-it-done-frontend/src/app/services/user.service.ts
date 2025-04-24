@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { tap } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { User } from '../models/user';
 
 @Injectable({
@@ -26,4 +26,9 @@ login(email: string, password: string){
       localStorage.setItem('myCoffeeToken', response);
     }));
 }
+
+getUserDetails(): Observable<any> {
+  return this.http.get(`${this.baseURL}/Bill/user`);
+}
+
 }
