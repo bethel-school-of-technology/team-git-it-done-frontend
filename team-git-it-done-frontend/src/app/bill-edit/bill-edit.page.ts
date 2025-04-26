@@ -32,7 +32,8 @@ export class BillEditPage implements OnInit {
   }
 
   editBill() {
-    this.myBillService.editBill(this.billID, this.updateBill).subscribe((response: any) => {
+    this.updateBill.billId = this.billID; // Ensure billId is set
+    this.myBillService.editBill(this.updateBill).subscribe((response: any) => {
       console.log(response);
       this.router.navigate(["listall"]);
 
