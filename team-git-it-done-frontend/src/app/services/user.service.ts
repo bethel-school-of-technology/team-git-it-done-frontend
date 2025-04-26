@@ -24,12 +24,12 @@ login(email: string, password: string){
 
   return this.http.get(`${this.baseURL}/login`,  { params: queryParams, responseType: 'text' })
     .pipe(tap((response: any) => {
-      localStorage.setItem('myCoffeeToken', response);
+      localStorage.setItem('myBillToken', response);
     }));
 }
 
-getUserDetails(): Observable<any> {
-  return this.http.get(`${this.baseURL}/Bill/user`);
-}
+// getUserDetails(): Observable<any> {
+//   return this.http.get(`${this.baseURL}/Bill/user`);
+// }
 
 }

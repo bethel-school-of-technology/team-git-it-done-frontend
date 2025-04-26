@@ -1,20 +1,3 @@
-// import { Component, OnInit } from '@angular/core';
-
-// @Component({
-//   selector: 'app-bill-list',
-//   templateUrl: './bill-list.page.html',
-//   styleUrls: ['./bill-list.page.scss'],
-//   standalone: false,
-// })
-// export class BillListPage implements OnInit {
-
-//   constructor() { }
-
-//   ngOnInit() {
-//   }
-
-// }
-
 import { Component, OnInit } from '@angular/core';
 import { Bill } from '../models/bill';
 import { BillService } from '../services/bill.service';
@@ -29,28 +12,37 @@ export class BillListPage implements OnInit {
 
   //property to store list of bills
 
-listofBills: Bill[] = [];
+  listOfBills: Bill[] = [];
+  billToOwed: { [billId: number]: number } = {};
 
   constructor(private myBillService: BillService) { }
 
-  //Change the (1) bellow to an actual ID number
   ngOnInit(): void {
-    // this.myBillService.getAllBills(1).subscribe((response: Bill[]) => {
-    //   console.log(response);
-    //   this.listofBills = response;
-    // })
-    this.myBillService.getAllBills().subscribe((Bill)=>{
-      this.listofBills=Bill;
-    })
+    this.myBillService.getAllBills().subscribe((bills) => {
+      this.listOfBills = bills;
+  
+      this.listOfBills.forEach(bill => {
+        if (bill.billId != null) { // Make sure billId exists
+          this.myBillService.getSettledAmount(bill.billId).subscribe((response: any) => {
+            this.billToOwed[bill.billId ?? 0] = bill.sharedPrice ?? 0 - response;
+          });
+        }
+      });
+    });
   }
+  
 
-  deleteBill(id:number){
-    console.log("Testing" + id);
-    this.myBillService.deleteBill(id).subscribe((response: any) =>{
+  deleteBill(billId: number){
+    console.log(billId);
+    this.myBillService.deleteBill(billId).subscribe((response: any) => {
       console.log(response);
-      this.ngOnInit();
-      
-    })
+      this.listOfBills = this.listOfBills.filter(bill => bill.billId !== billId);
+    });
   }
 
+  editBill(billId: number){
+  }
+
+  settleBill(billId: number){
+  }
 }
