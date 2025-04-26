@@ -1,32 +1,30 @@
-// export class Bill {
-
 import { BillLink } from "./bill-link";
-
-//     id : number=0;
-//     name : string="";
-//     description : string="";
-//     price : number=0;
-// }
-
-//constructor was added bellow
 
 export class Bill {
 
-    billId? : number;
-    name? : string;
-    description? : string;
-    price? : number;
-    creatorId? : number;
-    billLinks? : BillLink;
+    billId?: number;
+    name?: string;
+    description?: string;
+    price?: number;
+    sharedPrice?: number; 
+    creatorId?: number;
+    billLinks?: BillLink[]; 
 
-    constructor(id?: number, name?: string, description?: string, price?: number, creatorId?:number, billLinks?: BillLink) {
-        this.billId = id;
+    constructor(
+        billId?: number,
+        name?: string,
+        description?: string,
+        price?: number,
+        sharedPrice?: number,
+        creatorId?: number,
+        billLinks?: BillLink[]
+    ) {
+        this.billId = billId;
         this.name = name;
         this.description = description;
         this.price = price;
+        this.sharedPrice = sharedPrice;
         this.creatorId = creatorId;
         this.billLinks = billLinks;
-
     }
 }
-
