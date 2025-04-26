@@ -1,18 +1,5 @@
-<!-- <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>bill-edit</ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">bill-edit</ion-title>
-    </ion-toolbar>
-  </ion-header>
-</ion-content> -->
-
-<hr>
+<!-- <hr>
 <h3>Edit Bill</h3>
 <hr>
 <form (ngSubmit) = "editBill()">
@@ -28,4 +15,33 @@
 <ion-button 
   type="submit">EDIT
 </ion-button>
-</form>
+</form> -->
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Bill-Edit</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">create</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-item>
+    <ion-input label="Name" placeholder="Enter Email" [(ngModel)] ="updateBill.name" ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input label="Description" placeholder="Enter Password"  [(ngModel)] ="updateBill.description" ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input label="Price" placeholder="Enter Email" [(ngModel)] ="updateBill.price" ></ion-input>
+  </ion-item>
+
+  <ion-button color="tertiary" (click)="editBill()">Confirm</ion-button>
+
+</ion-content>

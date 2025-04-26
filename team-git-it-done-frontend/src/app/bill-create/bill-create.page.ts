@@ -21,7 +21,7 @@ constructor(private myBillService: BillService, private router: Router) { }
   createNew(){
     this.myBillService.createBill(this.newBill).subscribe((response: any) => {
       console.log(response);
-      this.router.navigate(["listall"]);
+      this.router.navigate(["/profile/bill-list"]);
     })
   }
 
