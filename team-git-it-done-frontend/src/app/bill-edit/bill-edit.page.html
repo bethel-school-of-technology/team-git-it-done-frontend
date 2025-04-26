@@ -1,31 +1,36 @@
-<!-- <ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>bill-edit</ion-title>
+    <ion-title>Edit Bill</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">bill-edit</ion-title>
-    </ion-toolbar>
-  </ion-header>
-</ion-content> -->
+<ion-content class="ion-padding">
 
-<hr>
-<h3>Edit Bill</h3>
-<hr>
-<form (ngSubmit) = "editBill()">
-  <label>Name </label>
-  <Input type="text" name="name" [(ngModel)] = "updateBill.name">
-  <br>
-  <label>Description </label>
-  <Input type="text" name="description" [(ngModel)] = "updateBill.description">
-  <br>
-  <label>Price </label>
-  <Input type="text" name="price" [(ngModel)] = "updateBill.price">
-  <br>
-<ion-button 
-  type="submit">EDIT
-</ion-button>
-</form>
+  <form (ngSubmit)="editBill()" #editBillForm="ngForm">
+
+    <ion-item>
+      <ion-label position="floating">Name</ion-label>
+      <ion-input type="text" id="name" name="name" [(ngModel)]="updateBill.name" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Description</ion-label>
+      <ion-input type="text" id="description" name="description" [(ngModel)]="updateBill.description"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Price (Dollars)</ion-label>
+      <ion-input type="number" id="price" name="price" [(ngModel)]="updateBill.price" required></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" type="submit" [disabled]="editBillForm.invalid" class="ion-margin-top">
+      Save Changes
+    </ion-button>
+
+    <ion-button expand="block" color="medium" (click)="cancel()" class="ion-margin-top">
+      Cancel
+    </ion-button>
+
+  </form>
+
+</ion-content>
