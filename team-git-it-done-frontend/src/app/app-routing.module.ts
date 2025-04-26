@@ -20,7 +20,7 @@ const routes: Routes = [
     loadChildren: () => import('./bill-detail/bill-detail.module').then( m => m.BillDetailPageModule)
   },
   {
-    path: 'bill-edit/:billid',
+    path: 'bill-edit/:billId',
     loadChildren: () => import('./bill-edit/bill-edit.module').then( m => m.BillEditPageModule)
   },
   {
