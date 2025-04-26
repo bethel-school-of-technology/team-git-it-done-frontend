@@ -2,22 +2,25 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 
+
 const routes: Routes = [
   {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+
+    path: 'sign-in',
+    loadChildren: () => import('./sign-in/sign-in.module').then( m => m.SignInPageModule)
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'sign-in',
     pathMatch: 'full'
   },
   {
-    path: 'bill-detail/:billid',
+    path: 'bill-detail/:id',
+
     loadChildren: () => import('./bill-detail/bill-detail.module').then( m => m.BillDetailPageModule)
   },
   {
-    path: 'bill-edit/:id',
+    path: 'bill-edit/:billid',
     loadChildren: () => import('./bill-edit/bill-edit.module').then( m => m.BillEditPageModule)
   },
   {
@@ -29,6 +32,11 @@ const routes: Routes = [
     path: 'sign-in',
     loadChildren: () => import('./sign-in/sign-in.module').then( m => m.SignInPageModule)
   },
+
+      {
+    path: 'sign-up',
+    loadChildren: () => import('./sign-up/sign-up.module').then( m => m.SignUpPageModule)
+  },
  
   {
     path: 'bill-create',
@@ -38,7 +46,15 @@ const routes: Routes = [
     path: 'user',
     loadChildren: () => import('./user/user.module').then( m => m.UserPageModule)
   },
-
+  {
+    path: 'profile',
+    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
+  },
+  {
+    path: 'friends',
+    loadChildren: () => import('./friends/friends.module').then( m => m.FriendsPageModule)
+  }
+  
 
 
 ];
