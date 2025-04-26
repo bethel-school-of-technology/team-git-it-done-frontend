@@ -73,4 +73,9 @@ export class BillService {
   deleteBillLink(billLinkId: number): Observable<any> {
     return this.http.delete(`${this.baseURL}/link/${billLinkId}`, { headers: this.getAuthHeaders() });
   }
+
+  //This method should get the bill and return the amount settled by the user connected to the userID in the token
+  getSettledAmount(billId: number): Observable<BillLink> {
+    return this.http.get<BillLink>(`${this.baseURL}/settled/${billId}`, { headers: this.getAuthHeaders() });
+  }
 }

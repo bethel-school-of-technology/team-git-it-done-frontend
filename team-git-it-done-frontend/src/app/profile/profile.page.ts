@@ -15,9 +15,9 @@ export class ProfilePage implements OnInit {
 
   ngOnInit() {
    
-    this.userService.getUserDetails().subscribe((user) => {
-      this.userName = user.firstName; 
-    });
+    // this.userService.getUserDetails().subscribe((user) => {
+    //   this.userName = user.firstName; 
+    // });
   }
 
 }
