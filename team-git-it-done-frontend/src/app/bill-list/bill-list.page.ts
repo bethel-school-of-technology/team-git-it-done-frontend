@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Bill } from '../models/bill';
 import { BillService } from '../services/bill.service';
+import { DialogService } from '../services/dialog.service';
 
 @Component({
   selector: 'app-bill-list',
@@ -10,25 +11,13 @@ import { BillService } from '../services/bill.service';
 })
 export class BillListPage implements OnInit {
 
-  //property to store list of bills
-
   listOfBills: Bill[] = [];
   billToOwed: { [billId: number]: number } = {};
 
-  constructor(private myBillService: BillService) { }
+  constructor(private myBillService: BillService, private myDialogService: DialogService) { }
 
   ngOnInit(): void {
-    this.myBillService.getAllBills().subscribe((bills) => {
-      this.listOfBills = bills;
-  
-      this.listOfBills.forEach(bill => {
-        if (bill.billId != null) { // Make sure billId exists
-          this.myBillService.getSettledAmount(bill.billId).subscribe((response: any) => {
-            this.billToOwed[bill.billId ?? 0] = bill.sharedPrice ?? 0 - response;
-          });
-        }
-      });
-    });
+    this.loadBills();
   }
   
 
@@ -44,5 +33,30 @@ export class BillListPage implements OnInit {
   }
 
   settleBill(billId: number){
+    this.myDialogService.showPrompt("Settle Bill", "Enter amount to settle:").subscribe((response: any) => {
+      if (response != null) {
+        this.myBillService.settleBill(billId, response).subscribe((response: any) => {
+          this.billToOwed[billId] -= response;
+        });
+      }
+      this.loadBills();
+    });
   }
+
+  loadBills() {
+    this.myBillService.getAllBills().subscribe((bills) => {
+      this.listOfBills = bills;
+  
+      this.listOfBills.forEach(bill => {
+        if (bill.billId != null) {
+          this.myBillService.getSettledAmount(bill.billId).subscribe((response: any) => {  
+            const sharedPrice = bill.sharedPrice ?? 0;
+            const settledAmount = response ?? 0;
+            this.billToOwed[bill.billId!] = sharedPrice - settledAmount;
+          });
+        }
+      });
+    });
+  }
+  
 }
