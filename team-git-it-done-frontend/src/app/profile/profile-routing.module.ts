@@ -15,6 +15,13 @@ const routes: Routes = [
             (m) => m.BillListPageModule
           ),
       },
+      { 
+        path: 'bill-create',
+        loadChildren: () =>
+          import('../bill-create/bill-create.module').then(
+            (m) => m.BillCreatePageModule
+          ),
+      },
       {
         path: 'friends',
         loadChildren: () =>
