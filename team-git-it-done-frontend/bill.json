@@ -1,0 +1,51 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+
+
+  "bill": [
+    {
+      "id": 1,
+      "name": "Bob",
+      "description": "bob@bob.com",
+      "price": 35,
+      "creatorId": 3,
+      "billLinks": "Test"
+    },
+    {
+      "id": 2,
+      "name": "Kara",
+      "description": "kara@kara.com",
+      "price": 55,
+      "creatorId": 4,
+      "billLinks": "Test"
+    },
+    {
+      "id": 3,
+      "name": "Hope",
+      "description": "love@love.com",
+      "price": 54,
+      "creatorId": 5,
+      "billLinks": "Test"
+    }
+
+
+  ],
+
+
+  "profile": {
+    "name": "typicode"
+  }
+}

@@ -8,12 +8,14 @@ import { BillListPageRoutingModule } from './bill-list-routing.module';
 
 import { BillListPage } from './bill-list.page';
 
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    BillListPageRoutingModule
+    BillListPageRoutingModule,
+  
   ],
   declarations: [BillListPage]
 })

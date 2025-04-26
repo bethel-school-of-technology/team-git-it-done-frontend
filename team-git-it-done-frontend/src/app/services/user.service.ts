@@ -10,6 +10,7 @@ export class UserService {
 
   baseURL: string = 'http://localhost:5072/api/Auth';
 
+
   constructor(private http: HttpClient) { }
 
   signUp(newUser: User){

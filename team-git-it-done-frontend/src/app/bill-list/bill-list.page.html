@@ -1,8 +1,52 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>bill-list</ion-title>
+
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+  </ion-buttons>
+    <ion-title>List of Bills</ion-title>
   </ion-toolbar>
 </ion-header>
+
+
+<div *ngFor = "let bill of listofBills">
+  <p>{{bill.billId}}. 
+    <a routerLink= "/bill-list/{{bill.billId}}">
+      {{bill.name}} {{bill.description}} {{bill.price}}
+    </a></p>
+
+    <ion-button 
+    onclick = "deleteBill(bill.billId)">Delete Bill
+  </ion-button>
+
+</div>
+
+
+
+
+
+
+
+
+<!-- <h1>Bill List</h1>
+<a [routerLink]="['new']">
+  Create New Bill
+</a>
+<div *ngIf="listofBills">
+    <div *ngFor="let bill of listofBills">
+        <h2>{{bill.name}} - ${{bill.price}}</h2>
+        <p>{{bill.description}}</p>       
+        <hr>
+
+        <ion-button 
+        onclick = "deleteBill(bill.billid)">Delete Bill
+      </ion-button>
+
+    </div>
+</div> -->
+
+
+
 
 <ion-content>
   <ion-header collapse="condense">
@@ -11,3 +55,4 @@
     </ion-toolbar>
   </ion-header>
 </ion-content>
+

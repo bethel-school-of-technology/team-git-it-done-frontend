@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-//import { SignUpComponent } from './components/sign-up/sign-up.component';
+
 
 
 const routes: Routes = [
   {
+
     path: 'sign-in',
     loadChildren: () => import('./sign-in/sign-in.module').then( m => m.SignInPageModule)
   },
@@ -15,10 +16,11 @@ const routes: Routes = [
   },
   {
     path: 'bill-detail/:id',
+
     loadChildren: () => import('./bill-detail/bill-detail.module').then( m => m.BillDetailPageModule)
   },
   {
-    path: 'bill-edit/:id',
+    path: 'bill-edit/:billid',
     loadChildren: () => import('./bill-edit/bill-edit.module').then( m => m.BillEditPageModule)
   },
   {
@@ -31,7 +33,7 @@ const routes: Routes = [
     loadChildren: () => import('./sign-in/sign-in.module').then( m => m.SignInPageModule)
   },
 
-  {
+      {
     path: 'sign-up',
     loadChildren: () => import('./sign-up/sign-up.module').then( m => m.SignUpPageModule)
   },
