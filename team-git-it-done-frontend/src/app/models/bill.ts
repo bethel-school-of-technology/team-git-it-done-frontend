@@ -1,5 +1,7 @@
 // export class Bill {
 
+import { BillLink } from "./bill-link";
+
 //     id : number=0;
 //     name : string="";
 //     description : string="";
@@ -10,15 +12,15 @@
 
 export class Bill {
 
-    billid? : number=0;
-    name? : "";
-    description? : string="";
-    price? : number=0;
-    creatorId? : "";
-    billLinks? : "";
+    billId? : number;
+    name? : string;
+    description? : string;
+    price? : number;
+    creatorId? : number;
+    billLinks? : BillLink;
 
-    constructor(billid?: number, name?: "", description?: "", price?: number, creatorId?:"", billLinks?: "") {
-        this.billid = billid;
+    constructor(id?: number, name?: string, description?: string, price?: number, creatorId?:number, billLinks?: BillLink) {
+        this.billId = id;
         this.name = name;
         this.description = description;
         this.price = price;

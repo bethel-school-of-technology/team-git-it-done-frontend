@@ -1,4 +1,4 @@
-<ion-header [translucent]="true">
+<!-- <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>bill-edit</ion-title>
   </ion-toolbar>
@@ -10,4 +10,22 @@
       <ion-title size="large">bill-edit</ion-title>
     </ion-toolbar>
   </ion-header>
-</ion-content>
+</ion-content> -->
+
+<hr>
+<h3>Edit Bill</h3>
+<hr>
+<form (ngSubmit) = "editBill()">
+  <label>Name </label>
+  <Input type="text" name="name" [(ngModel)] = "updateBill.name">
+  <br>
+  <label>Description </label>
+  <Input type="text" name="description" [(ngModel)] = "updateBill.description">
+  <br>
+  <label>Price </label>
+  <Input type="text" name="price" [(ngModel)] = "updateBill.price">
+  <br>
+<ion-button 
+  type="submit">EDIT
+</ion-button>
+</form>

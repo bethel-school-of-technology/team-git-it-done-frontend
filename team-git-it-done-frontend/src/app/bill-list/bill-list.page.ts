@@ -1,4 +1,23 @@
+// import { Component, OnInit } from '@angular/core';
+
+// @Component({
+//   selector: 'app-bill-list',
+//   templateUrl: './bill-list.page.html',
+//   styleUrls: ['./bill-list.page.scss'],
+//   standalone: false,
+// })
+// export class BillListPage implements OnInit {
+
+//   constructor() { }
+
+//   ngOnInit() {
+//   }
+
+// }
+
 import { Component, OnInit } from '@angular/core';
+import { Bill } from '../models/bill';
+import { BillService } from '../services/bill.service';
 
 @Component({
   selector: 'app-bill-list',
@@ -8,9 +27,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BillListPage implements OnInit {
 
-  constructor() { }
+  //property to store list of bills
 
-  ngOnInit() {
+listofBills: Bill[] = [];
+
+  constructor(private myBillService: BillService) { }
+
+  //Change the (1) bellow to an actual ID number
+  ngOnInit(): void {
+    // this.myBillService.getAllBills(1).subscribe((response: Bill[]) => {
+    //   console.log(response);
+    //   this.listofBills = response;
+    // })
+    this.myBillService.getAllBills().subscribe((Bill)=>{
+      this.listofBills=Bill;
+    })
+  }
+
+  deleteBill(id:number){
+    console.log("Testing" + id);
+    this.myBillService.deleteBill(id).subscribe((response: any) =>{
+      console.log(response);
+      this.ngOnInit();
+      
+    })
   }
 
 }

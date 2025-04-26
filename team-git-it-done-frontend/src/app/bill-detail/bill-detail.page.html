@@ -1,4 +1,4 @@
-<ion-header [translucent]="true">
+<!-- <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>bill-detail</ion-title>
   </ion-toolbar>
@@ -10,4 +10,19 @@
       <ion-title size="large">bill-detail</ion-title>
     </ion-toolbar>
   </ion-header>
-</ion-content>
+</ion-content> -->
+
+<hr>
+<h3>Selected Bill: {{currentBill.name}}</h3>
+<hr>
+<div>
+  <p>Name: {{currentBill.name}}</p>
+  <p>Name: {{currentBill.description}}</p>
+  <p>Name: {{currentBill.price}}</p>
+</div>
+
+<ion-icon routerLink="/edit/{{currentBill.billId}}">
+  <ion-button>Edit Bill</ion-button>
+
+</ion-icon>
+<router-outlet></router-outlet>
