@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../models/user';
-import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -10,21 +10,21 @@ import { Router } from '@angular/router';
   standalone: false,
 })
 export class SignInPage implements OnInit {
-
-  newUser: User = new User();
-
+  email: string = '';
+  password: string = '';
+ 
   constructor(private userService: UserService, private router: Router) { }
-
+ 
   ngOnInit(): void {
   }
-  
-  signUp() {
-    this.userService.signUp(this.newUser).subscribe(() => {
-        window.alert("User Registered Successfully");
-        this.router.navigate(['signin']);
+ 
+  signin(){
+    this.userService.login(this.email, this.password).subscribe((response:any) => {
+        this.router.navigateByUrl('/profile');
     }, error => {
-        window.alert("User Registration Error");
-        console.log('Error: ', error)
+        console.log('Error: ', error);
+        window.alert('Unsuccessful Login');
+        this.router.navigateByUrl('/sign-in');
     });
   }
 }

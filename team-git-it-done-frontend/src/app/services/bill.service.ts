@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 export class BillService {
 
 
-baseURL: string = "https://localhost:5072/api/bill";
+baseURL: string = 'http://localhost:5072/api/Bill';
 
 tokenKey: string = "myBillToken";
 

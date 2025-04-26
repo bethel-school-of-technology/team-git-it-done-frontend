@@ -10,4 +10,15 @@
       <ion-title size="large">sign-in</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-item>
+    <ion-input label="Email" placeholder="Enter Email" [(ngModel)] ="email" ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input label="Password" placeholder="Enter Password"  [(ngModel)] ="password" ></ion-input>
+  </ion-item>
+
+  <ion-button color="tertiary" (click)="signin()">Confirm</ion-button>
+
 </ion-content>

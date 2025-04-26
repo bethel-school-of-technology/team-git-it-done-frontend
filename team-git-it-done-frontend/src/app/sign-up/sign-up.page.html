@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>signUp</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">SignUp</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-item>
+    <ion-input label="First Name" placeholder="Enter First Name" [(ngModel)] ="newUser.firstName" ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input label="Last Name" placeholder="Enter Last Name" [(ngModel)] ="newUser.lastName" ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input label="Email" placeholder="Enter Email" [(ngModel)] ="newUser.email" ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input label="Password" placeholder="Enter Password"  [(ngModel)] ="newUser.password" ></ion-input>
+  </ion-item>
+
+  <ion-button color="tertiary" (click)="signUp()">SignUp</ion-button>
+
+  
+</ion-content>
