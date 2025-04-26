@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/models/user';
-import { UserService } from 'src/app/services/user.service';
+import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
+import { User } from '../models/user';
 
 @Component({
   selector: 'app-sign-up',
+  templateUrl: './sign-up.page.html',
+  styleUrls: ['./sign-up.page.scss'],
   standalone: false,
-  templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.scss']
 })
-export class SignUpComponent implements OnInit {
-
+export class SignUpPage implements OnInit {
   newUser: User = new User();
 
   constructor(private userService: UserService, private router: Router) { }
@@ -21,10 +20,11 @@ export class SignUpComponent implements OnInit {
   signUp() {
     this.userService.signUp(this.newUser).subscribe(() => {
         window.alert("User Registered Successfully");
-        this.router.navigate(['signin']);
+        this.router.navigate(['/sign-in']);
     }, error => {
         window.alert("User Registration Error");
         console.log('Error: ', error)
     });
   }
+
 }

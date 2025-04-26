@@ -10,7 +10,7 @@ export class BillService {
 
 
 
-baseURL: string = "https://localhost:8100/api/bill";
+baseURL: string = 'http://localhost:5072/api/Bill';
 tokenKey: string = "myBillToken";
 
 constructor(private http: HttpClient) { }
