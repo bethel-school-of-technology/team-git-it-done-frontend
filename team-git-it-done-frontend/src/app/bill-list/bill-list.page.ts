@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Bill } from '../models/bill';
 import { BillService } from '../services/bill.service';
 import { DialogService } from '../services/dialog.service';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-bill-list',
@@ -14,7 +15,7 @@ export class BillListPage implements OnInit {
   listOfBills: Bill[] = [];
   billToOwed: { [billId: number]: number } = {};
 
-  constructor(private myBillService: BillService, private myDialogService: DialogService) { }
+  constructor(private myBillService: BillService, private myDialogService: DialogService, private router: Router) { }
 
   ngOnInit(): void {
     this.loadBills();
@@ -29,8 +30,10 @@ export class BillListPage implements OnInit {
     });
   }
 
-  editBill(billId: number){
+  navigateToEditBill(billId: number) {
+    this.router.navigate(['/bill-edit', billId]);
   }
+  
 
   settleBill(billId: number){
     this.myDialogService.showPrompt("Settle Bill", "Enter amount to settle:").subscribe((response: any) => {

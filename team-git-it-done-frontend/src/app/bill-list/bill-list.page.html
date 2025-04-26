@@ -30,7 +30,7 @@
     </ion-card-content>
 
     <ion-button (click)="deleteBill(bill.billId ?? 0)" color="danger">Delete</ion-button>
-    <ion-button (click)="editBill(bill.billId ?? 0)">Edit</ion-button>
+    <ion-button (click)="navigateToEditBill(bill.billId ?? 0)">Edit</ion-button>
     <ion-button (click)="settleBill(bill.billId ?? 0)" color="success">Settle</ion-button>
   </ion-card>
 
