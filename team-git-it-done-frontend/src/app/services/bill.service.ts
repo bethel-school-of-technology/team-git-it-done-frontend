@@ -1,56 +1,42 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http'; // add HttpHeaders
 import { Bill } from '../models/bill';
 import { Observable } from 'rxjs';
-
 
 @Injectable({
   providedIn: 'root'
 })
 export class BillService {
 
+  baseURL: string = "http://localhost:5072/api/Bill";
+  tokenKey: string = "myBillToken";
 
-baseURL: string = "http://localhost:5072/api/Bill";
+  constructor(private http: HttpClient) { }
 
-tokenKey: string = "myBillToken";
-
-constructor(private http: HttpClient) { }
-
-
-// getAllBills(id: number): Observable<Bill[]> {
-//   return this.http.get<Bill[]>(this.baseURL+ "/" + id);
-// } 
-
-getAllBills(): Observable<Bill[]> {
-  return this.http.get<Bill[]>(this.baseURL);
-}
-
-
-createBill(newBill: Bill) {
-  let reqHeaders = {
-      Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`
+  private getAuthHeaders(): HttpHeaders {
+    const token = localStorage.getItem(this.tokenKey);
+    return new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
   }
-  return this.http.post(this.baseURL, newBill, { headers: reqHeaders });
-}
 
+  getAllBills(): Observable<Bill[]> {
+    return this.http.get<Bill[]>(this.baseURL, { headers: this.getAuthHeaders() });
+  }
 
+  createBill(newBill: Bill): Observable<any> {
+    return this.http.post(this.baseURL, newBill, { headers: this.getAuthHeaders() });
+  }
 
+  getBillByID(id: number): Observable<Bill> {
+    return this.http.get<Bill>(`${this.baseURL}/${id}`, { headers: this.getAuthHeaders() });
+  }
 
-getBillByID(id: number): Observable<Bill> {
-return this.http.get<Bill>(this.baseURL + "/" + id);
-}
+  editBill(bill: Bill): Observable<any> {
+    return this.http.put(`${this.baseURL}/${bill.billId}`, bill, { headers: this.getAuthHeaders() });
+  }
 
-
-editBill(bill: any, updateBill: Bill): Observable<any> {
-  return this.http.put(`/api/bill/${bill.id}`, bill, {
-    headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
-  });
-}
-
-
-deleteBill(id: number): Observable<any> {
-  return this.http.delete(`/api/bill/${id}`, {
-    headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
-  });
-}
+  deleteBill(id: number): Observable<any> {
+    return this.http.delete(`${this.baseURL}/${id}`, { headers: this.getAuthHeaders() });
+  }
 }
