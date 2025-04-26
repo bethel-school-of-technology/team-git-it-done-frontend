@@ -17,19 +17,7 @@ export class BillListPage implements OnInit {
   constructor(private myBillService: BillService, private myDialogService: DialogService) { }
 
   ngOnInit(): void {
-    this.myBillService.getAllBills().subscribe((bills) => {
-      this.listOfBills = bills;
-  
-      this.listOfBills.forEach(bill => {
-        if (bill.billId != null) {
-          this.myBillService.getSettledAmount(bill.billId).subscribe((response: any) => {  
-            const sharedPrice = bill.sharedPrice ?? 0;
-            const settledAmount = response ?? 0;
-            this.billToOwed[bill.billId!] = sharedPrice - settledAmount;
-          });
-        }
-      });
-    });
+    this.loadBills();
   }
   
 
@@ -51,6 +39,24 @@ export class BillListPage implements OnInit {
           this.billToOwed[billId] -= response;
         });
       }
+      this.loadBills();
     });
   }
+
+  loadBills() {
+    this.myBillService.getAllBills().subscribe((bills) => {
+      this.listOfBills = bills;
+  
+      this.listOfBills.forEach(bill => {
+        if (bill.billId != null) {
+          this.myBillService.getSettledAmount(bill.billId).subscribe((response: any) => {  
+            const sharedPrice = bill.sharedPrice ?? 0;
+            const settledAmount = response ?? 0;
+            this.billToOwed[bill.billId!] = sharedPrice - settledAmount;
+          });
+        }
+      });
+    });
+  }
+  
 }
