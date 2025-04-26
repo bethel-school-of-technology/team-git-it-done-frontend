@@ -38,14 +38,14 @@ export class BillEditPage implements OnInit {
     if (this.billID !== undefined) {
       this.updateBill.billId = this.billID;
       this.myBillService.editBill(this.updateBill).subscribe((response: any) => {
-        console.log('Bill Updated:', response);
-        this.router.navigate(["/bill-list"]); 
+        this.router.navigate(["/profile/bill-list"]); 
       });
     }
   }
 
+
   cancel() {
-    this.router.navigate(['/bill-list']);
+    this.router.navigate(['/profile/bill-list']);
   }
 
   // createBillLink(){
