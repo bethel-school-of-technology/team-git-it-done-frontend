@@ -2,8 +2,10 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { User } from '../models/user';
+import { jwtDecode } from 'jwt-decode';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root',
@@ -28,8 +30,15 @@ export class UserService {
         responseType: 'text',
       })
       .pipe(
-        tap((response: any) => {
+
+        tap((response: string) => {
+          const decodedToken: any = jwtDecode(response);
+
+          const firstName = decodedToken.given_name; // read from JWT payload
+          const lastName = decodedToken.family_name;
+
           localStorage.setItem('myBillToken', response);
+          localStorage.setItem('fullName', `${firstName} ${lastName}`);
         })
       );
   }
