@@ -61,5 +61,5 @@ export class BillListPage implements OnInit {
       });
     });
   }
-  
+   
 }
