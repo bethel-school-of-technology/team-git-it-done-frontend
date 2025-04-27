@@ -3,6 +3,9 @@ import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { User } from '../models/user';
 import { jwtDecode } from 'jwt-decode';
+import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root',
@@ -27,6 +30,7 @@ export class UserService {
         responseType: 'text',
       })
       .pipe(
+
         tap((response: string) => {
           const decodedToken: any = jwtDecode(response);
 
@@ -37,5 +41,20 @@ export class UserService {
           localStorage.setItem('fullName', `${firstName} ${lastName}`);
         })
       );
+  }
+
+  getUserIdFromEmail(email: string): Observable<number> {
+    return this.http
+      .get<number>(`${this.baseURL}/user`, { params: { email } })
+      .pipe(
+        catchError((error) => {
+          alert('This email does not exist in our database');
+          return throwError(() => new Error('Failed to fetch user ID'));
+        })
+      );
+  }
+
+  getUserById(userId: number): Observable<User> {
+    return this.http.get<User>(`${this.baseURL}/user/${userId}`);
   }
 }
