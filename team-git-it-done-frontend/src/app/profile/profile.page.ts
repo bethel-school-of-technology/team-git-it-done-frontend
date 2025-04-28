@@ -21,4 +21,8 @@ export class ProfilePage implements OnInit {
   
   }
 
+  logout() {
+    this.userService.logout();
+  }
+
 }

@@ -5,6 +5,7 @@ import { User } from '../models/user';
 import { jwtDecode } from 'jwt-decode';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -13,7 +14,7 @@ import { throwError } from 'rxjs';
 export class UserService {
   baseURL: string = 'http://localhost:5072/api/Auth';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   signUp(newUser: User) {
     return this.http.post(`${this.baseURL}/register`, newUser);
@@ -56,5 +57,13 @@ export class UserService {
 
   getUserById(userId: number): Observable<User> {
     return this.http.get<User>(`${this.baseURL}/user/${userId}`);
+  }
+
+  logout() {
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('user');
+    this.http.post('/api/logout', {}).subscribe(() => {
+      this.router.navigate(['/sign-in']);
+    });
   }
 }
