@@ -1,29 +1,33 @@
-
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Bill Create</ion-title>
+  <ion-toolbar color="secondary">
+    <ion-title class="ion-text-center">
+  Bill Create
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content >
+<ion-content class="background-image">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">create</ion-title>
     </ion-toolbar>
   </ion-header>
 
+  <div class="content-wrapper">
+
   <ion-item>
-    <ion-input label="Name" placeholder="Enter Email" [(ngModel)] ="newBill.name" ></ion-input>
+    <ion-input label="Name" placeholder="Enter Name" [(ngModel)] ="newBill.name" ></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-input label="Description" placeholder="Enter Password"  [(ngModel)] ="newBill.description" ></ion-input>
+    <ion-input label="Description" placeholder="Enter Bill Description"  [(ngModel)] ="newBill.description" ></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-input label="Price" placeholder="Enter Email" [(ngModel)] ="newBill.price" ></ion-input>
+    <ion-input label="Price" placeholder="Enter Bill Cost" [(ngModel)] ="newBill.price" ></ion-input>
   </ion-item>
 
   <ion-button color="tertiary" (click)="createNew()">Confirm</ion-button>
 
+  </div>
 </ion-content>

@@ -4,13 +4,15 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
   </ion-buttons>
-    <ion-title>List of Bills</ion-title>
+    <ion-title class="ion-text-center">List of Bills</ion-title>
   </ion-toolbar>
 </ion-header>
 
-
+<!-- <ion-content class="background-image"> -->
+  <ion-content class="ion-padding page-background">
 <div *ngFor = "let bill of listOfBills">
   <ion-card class="ion-no-margin" color="light">
+
     <ion-card-header>
       <ion-card-title>{{bill.name}}</ion-card-title>
       <ion-card-subtitle>
@@ -35,3 +37,4 @@
   </ion-card>
 
 </div>
+</ion-content>
