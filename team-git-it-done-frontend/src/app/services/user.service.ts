@@ -60,10 +60,8 @@ export class UserService {
   }
 
   logout() {
-    localStorage.removeItem('authToken');
+    localStorage.removeItem('myBillToken');
     localStorage.removeItem('user');
-    this.http.post('/api/logout', {}).subscribe(() => {
-      this.router.navigate(['/sign-in']);
-    });
+    this.router.navigate(['/sign-in']);
   }
 }

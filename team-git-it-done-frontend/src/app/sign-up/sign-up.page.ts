@@ -27,4 +27,8 @@ export class SignUpPage implements OnInit {
     });
   }
 
+  navigateToSignIn() {
+    this.router.navigateByUrl('/sign-in');
+  }
+
 }
