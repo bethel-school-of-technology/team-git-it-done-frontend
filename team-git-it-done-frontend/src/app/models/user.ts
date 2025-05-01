@@ -5,6 +5,7 @@ export class User {
   firstName?: string;
   lastName?: string;
   username?: string; // There is no username in the backend. Should it be removed?
+  img?: string;
 
   constructor(
     id?: number,
@@ -12,7 +13,8 @@ export class User {
     password?: string,
     firstName?: string,
     lastName?: string,
-    username?: string
+    username?: string,
+    img?: string
   ) {
     this.id = id;
     this.email = email;
@@ -20,5 +22,6 @@ export class User {
     this.firstName = firstName;
     this.lastName = lastName;
     this.username = username;
+    this.img = img;
   }
 }

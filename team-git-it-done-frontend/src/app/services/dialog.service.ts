@@ -18,7 +18,7 @@ export class DialogService {
     })).pipe(
       map(result => result.value)
     );
-  }
+  } 
 
   getUserIdFromEmail(title: string, message: string): Observable<number> {
     return from(Dialog.prompt({
@@ -41,5 +41,7 @@ export class DialogService {
       })
     );
   }
+
+
 
 }

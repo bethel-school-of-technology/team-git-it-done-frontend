@@ -3,33 +3,34 @@
     <ion-title> {{ fullName }}</ion-title>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
-  </ion-buttons>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content >
+<ion-content>
   <div class="profile-header">
+    <ion-item>
+      <ion-label>Select Profile Picture</ion-label>
+      <input type="file" accept="image/*" (change)="onFile($event)" />
+    </ion-item>
     <ion-avatar slot="start">
-      <img alt="Silhouette of a person's head" src="https://scx2.b-cdn.net/gfx/news/hires/2021/cat-1.jpg" />
+      <img [src]="img" alt="Profile Picture" />
     </ion-avatar>
-    <h1> {{ fullName }}</h1>
-    
+    <h1>{{ fullName }}</h1>
   </div>
 
   <ion-segment class="custom-segment">
-    
     <ion-segment-button class="custom-segment" routerLink="/profile/bill-list">
       Bill List
     </ion-segment-button>
-    
-    <ion-segment-button class="custom-segment" routerLink="/profile/bill-create">
-      Create Bill
-    </ion-segment-button>
+
+    <ion-segment-button class="custom-segment" routerLink="/profile/bill-create"
+      >Create Bill</ion-segment-button
+    >
 
     <ion-segment-button class="custom-segment" routerLink="/profile/friends">
       Friends
     </ion-segment-button>
-
   </ion-segment>
   <router-outlet></router-outlet>
 </ion-content>
