@@ -1,0 +1,60 @@
+.profile-header {
+  /* Set as relative so the absolutely positioned logo is relative to it */
+  position: relative;
+
+  /* Use flexbox to center content */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  /* Add some padding at the top to avoid overlapping with the logo */
+  padding-top: 50px;
+  text-align: center;
+  background-color: #bec5ad;
+}
+
+/* Position the logo in the top left corner */
+.logo {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  height: 40px; /* Adjust the height as needed for a small logo */
+  width: auto;
+}
+
+p {
+  position: absolute;
+  top: 13px;
+  left: 50px;
+  color: #3b5249;
+  font-style: italic;
+}
+
+ion-segment{
+    width: 100%;       /* Force the segment to span the entire container */
+    margin: 0;         /* Remove any default margins */
+    padding: 0; 
+}
+
+ion-segment-button {
+  background-color: #3b5249;
+  --color-checked: #3b5249;
+  width: 100%;       /* Force the segment to span the entire container */
+  margin: 0;         /* Remove any default margins */
+  padding: 0; 
+}
+
+ion-segment-button.md{
+    color: #bec5ad;
+
+  }
+
+.segment-button-checked.md {
+    background-color:#a4b494;
+   color: #3b5249;
+  }
+  
+  ion-segment-button.md{
+    height: 4px;
+  }
