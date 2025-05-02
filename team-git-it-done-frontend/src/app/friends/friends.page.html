@@ -10,4 +10,20 @@
       <ion-title size="large">friends</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-list>
+
+    <ion-item *ngFor="let fren of friendsList">
+
+      <ion-avatar slot="start">
+        <img alt="Silhouette of a person's head" [src]="fren.pfp" />
+      </ion-avatar>
+
+        <ion-label>{{fren.mockUserName}}
+          
+        </ion-label>
+    </ion-item>
+</ion-list>
+
+
 </ion-content>

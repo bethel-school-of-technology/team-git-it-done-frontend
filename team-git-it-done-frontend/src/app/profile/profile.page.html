@@ -1,6 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title> {{ fullName }}</ion-title>
+    <input type="file" accept="image/*" (change)="onFile($event)" />
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
@@ -9,12 +10,15 @@
 
 <ion-content>
   <div class="profile-header">
-    <ion-item>
-      <ion-label>Select Profile Picture</ion-label>
-      <input type="file" accept="image/*" (change)="onFile($event)" />
-    </ion-item>
+  
+     
+     
+
+      
+   
     <ion-avatar slot="start">
       <img [src]="img" alt="Profile Picture" />
+     
     </ion-avatar>
     <h1>{{ fullName }}</h1>
   </div>
