@@ -10,19 +10,42 @@ import { User } from '../models/user';
 })
 export class ProfilePage implements OnInit {
 
-  // userName: string = '';
+   img: string = '';
 
   fullName: string = '';
   constructor(private userService: UserService) {}
 
   ngOnInit() {
-  // this.userName = localStorage.getItem('userName') || '';
-  this.fullName = localStorage.getItem('fullName') || '';
   
-  }
 
+
+  this.loadProData();
+    }
+  loadProData(){
+
+    this.fullName = localStorage.getItem('fullName') || '';
+    this.img = localStorage.getItem('img') || 'https://i.pinimg.com/originals/c0/9b/6d/c09b6d7edb7b4b89b382aa6ca0a761de.jpg';
+    }
+
+  onFile(event: any){
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      this.img = reader.result as string; // update preview
+      localStorage.setItem('img', this.img );
+      this.UpdateProPic(); // to backened
+    };
+
+    reader.readAsDataURL(file);
+  }
+  UpdateProPic() {
+    const userId = localStorage.getItem('userId');
+    this.userService.UpdateProPic(Number(userId), this.img).subscribe(response => {
+      this.img = response.img;
+    });
+  }
   logout() {
-    this.userService.logout();
+      this.userService.logout();
   }
-
 }
