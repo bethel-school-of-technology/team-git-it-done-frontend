@@ -17,6 +17,7 @@ export class ProfilePage implements OnInit {
   ngOnInit() {
     this.loadProData();
   }
+  
   loadProData() {
     this.fullName = localStorage.getItem('fullName') || '';
     this.img =
@@ -52,6 +53,4 @@ export class ProfilePage implements OnInit {
       fileInput.click();
     }
   }
-  
-
 }

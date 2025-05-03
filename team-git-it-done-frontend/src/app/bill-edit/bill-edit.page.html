@@ -103,7 +103,7 @@
 
     <ion-card-content>
       <ion-list>
-        <ion-item *ngFor="let user of linkedFullUsers">
+        <ion-item *ngFor="let user of linkedFullUsers; trackBy: trackByUserEmail">
           <ion-label>{{user.firstName}}</ion-label>
           <ion-icon slot="end" name="remove-circle-outline" (click)="getUserToRemove(user.email || '')"></ion-icon>
         </ion-item>
