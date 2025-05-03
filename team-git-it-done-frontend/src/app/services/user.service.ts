@@ -5,6 +5,7 @@ import { User } from '../models/user';
 import { jwtDecode } from 'jwt-decode';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,7 @@ import { throwError } from 'rxjs';
 export class UserService {
   baseURL: string = 'http://localhost:5072/api/Auth';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   signUp(newUser: User) {
     return this.http.post(`${this.baseURL}/register`, newUser);
@@ -60,7 +61,7 @@ export class UserService {
   getUserById(userId: number): Observable<User> {
     return this.http.get<User>(`${this.baseURL}/user/${userId}`);
   }
-
+  
   UploadProPic(userId: number, img: string): Observable<any> {
     return this.http.post(`${this.baseURL}/upload-pro-pic`, { userId, img });
   }
@@ -68,4 +69,11 @@ export class UserService {
   UpdateProPic(userId: number, img: string): Observable<any> {
     return this.http.post(`${this.baseURL}/update-pro-pic`, { userId, img });
   }
+  
+  logout() {
+    localStorage.removeItem('myBillToken');
+    localStorage.removeItem('user');
+    this.router.navigate(['/sign-in']);
+  }
+  
 }

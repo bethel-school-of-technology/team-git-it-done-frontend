@@ -114,6 +114,10 @@ export class BillEditPage implements OnInit {
       });
     }
   }
+
+  trackByUserEmail(index: number, user: User): string {
+    return user.email || index.toString();
+  }
   
 
 }
