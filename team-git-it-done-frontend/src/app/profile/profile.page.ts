@@ -31,20 +31,20 @@ export class ProfilePage implements OnInit {
     const file = event.target.files[0];
     const reader = new FileReader();
 
-    reader.onload = () => {
-      this.img = reader.result as string; // update preview
-      localStorage.setItem('img', this.img );
-      this.UpdateProPic(); // to backened
-    };
+    // reader.onload = () => {
+    //   this.img = reader.result as string; // update preview
+    //   localStorage.setItem('img', this.img );
+    //   this.UpdateProPic(); // to backened
+    // };
 
     reader.readAsDataURL(file);
   }
-  UpdateProPic() {
-    const userId = localStorage.getItem('userId');
-    this.userService.UpdateProPic(Number(userId), this.img).subscribe(response => {
-      this.img = response.img;
-    });
-  }
+  // UpdateProPic() {
+  //   const userId = localStorage.getItem('userId');
+  //   this.userService.UpdateProPic(Number(userId), this.img).subscribe(response => {
+  //     this.img = response.img;
+  //   });
+  // }
   logout() {
       this.userService.logout();
   }

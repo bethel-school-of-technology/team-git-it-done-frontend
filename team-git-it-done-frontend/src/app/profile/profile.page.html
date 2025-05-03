@@ -1,13 +1,15 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar>
     <ion-title> {{ fullName }}</ion-title>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
   </ion-toolbar>
-</ion-header>
-
+</ion-header> -->
 <ion-content>
+<div>
+  <ion-button class="logout" size="small" float-right (click)="logout()">Log Out</ion-button>
+</div>
   <div class="profile-header">
     <ion-item>
       <ion-label>Select Profile Picture</ion-label>
@@ -32,7 +34,6 @@
       Friends
     </ion-segment-button>
   </ion-segment>
-  <ion-button (click)="logout()">Logout</ion-button>
   <router-outlet></router-outlet>
 </ion-content>
 
