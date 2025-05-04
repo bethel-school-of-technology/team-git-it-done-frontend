@@ -30,7 +30,8 @@
       <ion-button (click)="openSettleModal(bill.billId ?? 0)" color="success">Settle</ion-button>
       <ion-button
         target="_blank"
-        [href]="`https://paypal.me/PatrickBackes75/${bill.billId != null ? billToOwed[bill.billId]?.toFixed(2) : ''}`"
+        
+        [href]="`https://www.sandbox.paypal.com/myaccount/summary?intl=0/${bill.billId != null ? billToOwed[bill.billId]?.toFixed(2) : ''}`"
       >Paypal</ion-button>
     </ion-card>
   </div>
