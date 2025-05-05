@@ -1,7 +1,13 @@
 <ion-content>
+
+
+   
+
   <div class="profile-header">
     <img src="assets/1.png" alt="Logo" class="logo" />
     <p>FairShare</p>
+    <ion-button class="logout" size="small" float-right (click)="logout()">Log Out</ion-button>
+
 
     <ion-avatar (click)="avatarClick()" style="cursor: pointer">
       <img [src]="img" alt="Profile Picture" />
@@ -30,7 +36,7 @@
       Friends
     </ion-segment-button>
   </ion-segment>
-  <ion-button (click)="logout()">Logout</ion-button>
+<!-- //  <ion-button (click)="logout()">Logout</ion-button> -->
   <router-outlet></router-outlet>
 </ion-content>
 
