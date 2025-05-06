@@ -40,13 +40,14 @@ export class ProfilePage implements OnInit {
 
     reader.readAsDataURL(file);
   }
+  
   UpdateProPic() {
     const userId = localStorage.getItem('userId');
-    this.userService
-      .UpdateProPic(Number(userId), this.img)
-      .subscribe((response) => {
-        this.img = response.img;
-      });
+    // this.userService
+    //   .UpdateProPic(Number(userId), this.img)
+    //   .subscribe((response) => {
+    //     this.img = response.img;
+    //   });
   }
 
 
@@ -55,6 +56,7 @@ export class ProfilePage implements OnInit {
     if (fileInput) {
       fileInput.click();
     }
+  }
 
   avatarClick() {
     this.fileInput.nativeElement.click();

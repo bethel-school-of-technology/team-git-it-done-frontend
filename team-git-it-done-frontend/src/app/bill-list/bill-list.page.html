@@ -12,7 +12,7 @@
           <ng-container
             *ngIf="bill.billId != null && billToOwed[bill.billId] !== undefined; else loading"
           >
-            ${{ billToOwed[bill.billId]?.toFixed(2) }}
+            ${{ billToOwed[bill.billId].toFixed(2) }}
           </ng-container>
           <ng-template #loading> Loading... </ng-template>
         </ion-card-subtitle>
@@ -26,7 +26,7 @@
       <ion-button
         target="_blank"
         
-        [href]="`https://paypal.me/PatrickBackes75/${bill.billId != null ? billToOwed[bill.billId]?.toFixed(2) : ''}`"
+        [href]="`https://paypal.me/PatrickBackes75/${bill.billId != null ? billToOwed[bill.billId].toFixed(2) : ''}`"
       >Paypal</ion-button>
     </ion-card>
     
