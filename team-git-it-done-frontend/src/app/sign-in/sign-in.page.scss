@@ -1,0 +1,37 @@
+ion-card{
+    border-radius: 20px;
+    border: 2px solid white;
+    background-color: rgb(51, 36, 46, 0.8);
+    margin: 5%;
+}
+ion-item{
+    margin-bottom: 15px;
+}
+ion-img{
+    padding: 20px;
+    margin: auto;
+}
+ion-content.background{
+    --background: url(../../assets/people.jpg) 0 0/100% 100% no-repeat;
+}
+ion-text{
+    text-align: center;
+}
+ion-input{
+    color:rgb(255, 255, 255);
+}
+ion-button{
+    margin: 3%;
+    text-transform: none;
+    color:white;
+    border: solid, 2px, white;
+    border-radius: 5px;
+}
+.first{
+    --background: #3B5249;
+    width: 20%;
+}
+.second{
+    --background: rgb(104, 18, 18);
+    width: 20%;
+}

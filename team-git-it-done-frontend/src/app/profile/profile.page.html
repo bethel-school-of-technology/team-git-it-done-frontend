@@ -7,36 +7,42 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
   <div class="profile-header">
-  
-     
-     
+    <img src="assets/1.png" alt="Logo" class="logo" />
+    <p>FairShare</p>
+    <ion-button class="logout" size="small" float-right (click)="logout()">Log Out</ion-button>
 
-      
-   
-    <ion-avatar slot="start">
+
+    <ion-avatar (click)="avatarClick()" style="cursor: pointer">
       <img [src]="img" alt="Profile Picture" />
      
     </ion-avatar>
+
+    <input
+      #fileInput
+      type="file"
+      accept="image/*"
+      (change)="onFile($event)"
+      style="display: none"
+    />
     <h1>{{ fullName }}</h1>
   </div>
 
-  <ion-segment class="custom-segment">
-    <ion-segment-button class="custom-segment" routerLink="/profile/bill-list">
+  <ion-segment value="default">
+    <ion-segment-button value="list" routerLink="/profile/bill-list">
       Bill List
     </ion-segment-button>
 
-    <ion-segment-button class="custom-segment" routerLink="/profile/bill-create"
+    <ion-segment-button value="create" routerLink="/profile/bill-create"
       >Create Bill</ion-segment-button
     >
 
-    <ion-segment-button class="custom-segment" routerLink="/profile/friends">
+    <ion-segment-button value="friends" routerLink="/profile/friends">
       Friends
     </ion-segment-button>
   </ion-segment>
-  <ion-button (click)="logout()">Logout</ion-button>
+<!-- //  <ion-button (click)="logout()">Logout</ion-button> -->
   <router-outlet></router-outlet>
 </ion-content>
 

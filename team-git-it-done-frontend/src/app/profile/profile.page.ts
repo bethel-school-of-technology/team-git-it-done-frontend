@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { User } from '../models/user';
 
@@ -7,17 +7,20 @@ import { User } from '../models/user';
   templateUrl: './profile.page.html',
   styleUrls: ['./profile.page.scss'],
   standalone: false,
+
 })
 export class ProfilePage implements OnInit {
   img: string = '';
 
   fullName: string = '';
+  // Reference to the hidden file input element
+  @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
+
   constructor(private userService: UserService) {}
 
   ngOnInit() {
     this.loadProData();
   }
-  
   loadProData() {
     this.fullName = localStorage.getItem('fullName') || '';
     this.img =
@@ -52,5 +55,14 @@ export class ProfilePage implements OnInit {
     if (fileInput) {
       fileInput.click();
     }
+
+  avatarClick() {
+    this.fileInput.nativeElement.click();
   }
+
+
+   logout() {
+      this.userService.logout();
+  }
+
 }
