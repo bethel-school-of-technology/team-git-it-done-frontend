@@ -1,13 +1,8 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title> {{ fullName }}</ion-title>
-    <input type="file" accept="image/*" (change)="onFile($event)" />
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-  </ion-toolbar>
 </ion-header>
 <ion-content>
+<div>
+  <ion-button class="logout" size="small" float-right (click)="logout()">Log Out</ion-button>
+</div>
   <div class="profile-header">
     <img src="assets/1.png" alt="Logo" class="logo" />
     <p>FairShare</p>
@@ -42,7 +37,6 @@
       Friends
     </ion-segment-button>
   </ion-segment>
-<!-- //  <ion-button (click)="logout()">Logout</ion-button> -->
   <router-outlet></router-outlet>
 </ion-content>
 

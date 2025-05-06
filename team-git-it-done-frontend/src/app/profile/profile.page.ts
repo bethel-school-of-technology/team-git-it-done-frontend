@@ -21,6 +21,7 @@ export class ProfilePage implements OnInit {
   ngOnInit() {
     this.loadProData();
   }
+
   loadProData() {
     this.fullName = localStorage.getItem('fullName') || '';
     this.img =
@@ -31,7 +32,6 @@ export class ProfilePage implements OnInit {
   onFile(event: any) {
     const file = event.target.files[0];
     const reader = new FileReader();
-
     reader.onload = () => {
       this.img = reader.result as string; // update preview
       localStorage.setItem('img', this.img);
