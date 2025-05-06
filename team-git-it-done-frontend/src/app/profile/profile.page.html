@@ -1,8 +1,13 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title> {{ fullName }}</ion-title>
+    <input type="file" accept="image/*" (change)="onFile($event)" />
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 <ion-content>
-
-
-   
-
   <div class="profile-header">
     <img src="assets/1.png" alt="Logo" class="logo" />
     <p>FairShare</p>
@@ -11,6 +16,7 @@
 
     <ion-avatar (click)="avatarClick()" style="cursor: pointer">
       <img [src]="img" alt="Profile Picture" />
+     
     </ion-avatar>
 
     <input

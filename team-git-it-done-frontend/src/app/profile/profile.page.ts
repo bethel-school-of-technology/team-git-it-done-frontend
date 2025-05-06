@@ -13,11 +13,8 @@ export class ProfilePage implements OnInit {
   img: string = '';
 
   fullName: string = '';
-
   // Reference to the hidden file input element
   @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
-
-
 
   constructor(private userService: UserService) {}
 
@@ -52,6 +49,13 @@ export class ProfilePage implements OnInit {
       });
   }
 
+
+  triggerFileInput() {
+    const fileInput = document.querySelector<HTMLInputElement>("#fileInput");
+    if (fileInput) {
+      fileInput.click();
+    }
+
   avatarClick() {
     this.fileInput.nativeElement.click();
   }
@@ -60,6 +64,5 @@ export class ProfilePage implements OnInit {
    logout() {
       this.userService.logout();
   }
-
 
 }
