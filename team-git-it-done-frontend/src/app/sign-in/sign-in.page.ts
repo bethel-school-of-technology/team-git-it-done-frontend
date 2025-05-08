@@ -12,10 +12,12 @@ import { UserService } from '../services/user.service';
 export class SignInPage implements OnInit {
   email: string = '';
   password: string = '';
+  randomVerse: string = '';
  
   constructor(private userService: UserService, private router: Router) { }
  
   ngOnInit(): void {
+    this.getBibleVerse();
   }
  
   signin(){
@@ -30,5 +32,11 @@ export class SignInPage implements OnInit {
 
   navigateToSignUp() {
     this.router.navigateByUrl('/sign-up');
+    }
+
+    getBibleVerse() {
+      this.userService.getBibleVerse().subscribe((response) => {
+        this.randomVerse = response;
+      });
     }
 }

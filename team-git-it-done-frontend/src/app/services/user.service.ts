@@ -64,4 +64,11 @@ export class UserService {
     localStorage.removeItem('user');
     this.router.navigate(['/sign-in']);
   }
+
+  getBibleVerse(): Observable<string> {
+    return this.http.get('https://beta.ourmanna.com/api/v1/get/?format=text', {
+      responseType: 'text'
+    });
+  }
+
 }
